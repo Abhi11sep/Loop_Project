@@ -129,11 +129,11 @@ function generateFlowchartPDF() {
   const x3 = margin + (colW + colGap) * 2;
 
   // ADMIN
-  drawNode(x1, y, colW, 16, '👑 ADMIN ROLE', 'admin@acme.com', '#581c87', '#a855f7');
+  drawNode(x1, y, colW, 16, '👑 ADMIN ROLE', 'admin@loop.com', '#581c87', '#a855f7');
   // ANALYST
-  drawNode(x2, y, colW, 16, '📊 ANALYST ROLE', 'analyst@acme.com', '#1e1b4b', '#6366f1');
+  drawNode(x2, y, colW, 16, '📊 ANALYST ROLE', 'analyst@loop.com', '#1e1b4b', '#6366f1');
   // VIEWER
-  drawNode(x3, y, colW, 16, '👁️ VIEWER ROLE', 'viewer@acme.com', '#064e3b', '#10b981');
+  drawNode(x3, y, colW, 16, '👁️ VIEWER ROLE', 'viewer@loop.com', '#064e3b', '#10b981');
 
   // Subtext under roles
   doc.setFontSize(6.5);

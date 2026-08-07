@@ -62,7 +62,7 @@ export default function ReportsPage() {
     if (!input) return;
 
     try {
-      const canvas = await html2canvas(input, { scale: 2, backgroundColor: '#090d16' });
+      const canvas = await html2canvas(input, { scale: 2, backgroundColor: '#030712' });
       const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF('p', 'mm', 'a4');
       const pdfWidth = pdf.internal.pageSize.getWidth();
@@ -82,25 +82,30 @@ export default function ReportsPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 font-sans">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold text-white tracking-tight flex items-center gap-2">
+          <div className="flex items-center gap-2 mb-1 font-mono">
+            <span className="text-[10px] font-mono font-black text-cyan-300 bg-cyan-950/90 border border-cyan-500/40 px-2.5 py-0.5 rounded-full uppercase shadow-[0_0_12px_rgba(6,182,212,0.2)]">
+              EXECUTIVE DIGEST SYNTHESIS
+            </span>
+          </div>
+          <h1 className="text-3xl font-black text-white tracking-tight flex items-center gap-2 font-mono">
             Voice of Customer (VoC) Reports
           </h1>
-          <p className="text-slate-400 text-sm">
-            AI-generated weekly digests synthesizing complaints, feature requests, and recommended actions
+          <p className="text-slate-400 text-xs font-mono">
+            Autonomous weekly executive digests synthesizing complaints, feature requests, and product action plans
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 font-mono text-xs font-bold">
           {activeReport && (
             <button
               onClick={exportPDF}
-              className="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition-all"
+              className="px-4 py-2.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-700/80 text-slate-200 flex items-center gap-1.5 transition-all hover:border-cyan-400/50"
             >
-              <Download className="w-3.5 h-3.5 text-indigo-400" />
-              Export PDF
+              <Download className="w-4 h-4 text-cyan-400" />
+              EXPORT PDF
             </button>
           )}
 
@@ -108,19 +113,19 @@ export default function ReportsPage() {
             <button
               onClick={handleGenerateReport}
               disabled={generating}
-              className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center gap-1.5 shadow-lg shadow-indigo-600/20 disabled:opacity-50 transition-all"
+              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 via-indigo-600 to-purple-600 hover:opacity-95 text-white flex items-center gap-2 shadow-xl shadow-cyan-500/25 disabled:opacity-50 transition-all border border-cyan-300/40"
             >
               <Sparkles className="w-4 h-4" />
-              {generating ? 'Synthesizing Data...' : 'Generate New Digest'}
+              {generating ? 'SYNTHESIZING...' : 'GENERATE NEW DIGEST'}
             </button>
           )}
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 font-mono">
         {/* Saved Reports Sidebar List */}
-        <div className="glass-panel p-4 rounded-2xl border border-slate-800 space-y-3 lg:col-span-1">
-          <h3 className="text-xs font-bold uppercase tracking-wider text-slate-400">Saved VoC Reports</h3>
+        <div className="cyber-glass-panel p-4 rounded-2xl border border-slate-800 space-y-3 lg:col-span-1">
+          <h3 className="text-[10px] font-bold uppercase tracking-wider text-slate-400">Saved VoC Digests</h3>
 
           {loading ? (
             <div className="text-xs text-slate-500 py-4">Loading reports...</div>
@@ -134,7 +139,7 @@ export default function ReportsPage() {
                   onClick={() => setActiveReport(rep)}
                   className={`p-3 rounded-xl border text-xs cursor-pointer transition-all ${
                     activeReport?.id === rep.id
-                      ? 'bg-indigo-600/15 border-indigo-500/40 text-white font-semibold'
+                      ? 'bg-gradient-to-r from-cyan-500/20 to-indigo-500/20 border-cyan-400/40 text-white font-bold shadow-[0_0_15px_rgba(6,182,212,0.2)]'
                       : 'bg-slate-900/60 border-slate-800/80 text-slate-400 hover:bg-slate-900'
                   }`}
                 >
@@ -149,25 +154,25 @@ export default function ReportsPage() {
         </div>
 
         {/* Report Main Document View */}
-        <div className="lg:col-span-3">
+        <div className="lg:col-span-3 font-sans">
           {!reportContent ? (
-            <div className="glass-panel p-12 rounded-2xl border border-slate-800 text-center space-y-3">
+            <div className="cyber-glass-panel p-12 rounded-2xl border border-slate-800 text-center space-y-3 font-mono">
               <FileText className="w-10 h-10 text-slate-600 mx-auto" />
-              <p className="text-slate-300 font-semibold">Select or Generate a VoC Report</p>
+              <p className="text-slate-300 font-bold">Select or Generate a VoC Report</p>
               <p className="text-xs text-slate-500 max-w-sm mx-auto">
-                Click "Generate New Digest" to create a fresh executive Voice of Customer report.
+                Click "GENERATE NEW DIGEST" to create a fresh executive Voice of Customer report.
               </p>
             </div>
           ) : (
-            <div id="voc-report-content" className="glass-panel p-8 rounded-2xl border border-slate-800 space-y-8 bg-slate-950">
+            <div id="voc-report-content" className="cyber-glass-panel p-8 rounded-2xl border border-slate-800 space-y-8 bg-[#030712]">
               {/* Report Header */}
-              <div className="border-b border-slate-800 pb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="border-b border-slate-800 pb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 font-mono">
                 <div>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 uppercase">
-                    Executive Intelligence Digest
+                  <span className="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-cyan-950/90 text-cyan-300 border border-cyan-500/40 uppercase">
+                    EXECUTIVE INTELLIGENCE DIGEST
                   </span>
-                  <h2 className="text-xl font-bold text-white tracking-tight mt-1">{reportContent.reportTitle}</h2>
-                  <p className="text-xs text-slate-400 mt-0.5">
+                  <h2 className="text-2xl font-black text-white tracking-tight mt-2">{reportContent.reportTitle}</h2>
+                  <p className="text-xs text-slate-400 mt-1">
                     Generated by {activeReport.generatedBy?.name || 'AI Engine'} on{' '}
                     {new Date(activeReport.createdAt).toLocaleDateString()}
                   </p>
@@ -176,36 +181,36 @@ export default function ReportsPage() {
 
               {/* Key Highlights Metrics Bar */}
               {reportContent.metrics && (
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-xl bg-slate-900 border border-slate-800 text-center">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 rounded-xl bg-slate-900 border border-slate-800 text-center font-mono">
                   <div>
-                    <span className="text-[10px] uppercase font-semibold text-slate-400 block">Total Items Analyzed</span>
-                    <span className="text-lg font-extrabold text-white">{reportContent.metrics.totalFeedback}</span>
+                    <span className="text-[9px] uppercase font-bold text-slate-400 block">Total Analyzed</span>
+                    <span className="text-xl font-black text-white">{reportContent.metrics.totalFeedback}</span>
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase font-semibold text-slate-400 block">Positive Sentiment</span>
-                    <span className="text-lg font-extrabold text-emerald-400">{reportContent.metrics.positivePercentage}%</span>
+                    <span className="text-[9px] uppercase font-bold text-slate-400 block">Positive Sentiment</span>
+                    <span className="text-xl font-black text-emerald-400">{reportContent.metrics.positivePercentage}%</span>
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase font-semibold text-slate-400 block">Negative Sentiment</span>
-                    <span className="text-lg font-extrabold text-red-400">{reportContent.metrics.negativePercentage}%</span>
+                    <span className="text-[9px] uppercase font-bold text-slate-400 block">Negative Sentiment</span>
+                    <span className="text-xl font-black text-red-400">{reportContent.metrics.negativePercentage}%</span>
                   </div>
                   <div>
-                    <span className="text-[10px] uppercase font-semibold text-slate-400 block">Weekly Shift</span>
-                    <span className="text-xs font-bold text-indigo-400">{reportContent.metrics.sentimentShift}</span>
+                    <span className="text-[9px] uppercase font-bold text-slate-400 block">Weekly Shift</span>
+                    <span className="text-xs font-bold text-cyan-300">{reportContent.metrics.sentimentShift}</span>
                   </div>
                 </div>
               )}
 
               {/* Top Complaints Section */}
               <div className="space-y-3">
-                <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                <h3 className="text-xs font-mono font-bold text-white uppercase tracking-wider flex items-center gap-2">
                   <AlertCircle className="w-4 h-4 text-red-400" />
                   Top Customer Complaints & Friction Points
                 </h3>
                 <div className="space-y-2">
                   {reportContent.topComplaints?.map((c: any, i: number) => (
-                    <div key={i} className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs space-y-1">
-                      <div className="flex items-center justify-between text-slate-300 font-semibold">
+                    <div key={i} className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-xs space-y-1.5">
+                      <div className="flex items-center justify-between text-slate-300 font-bold font-mono">
                         <span className="text-red-400 font-bold">{c.issue}</span>
                         <span className="text-[10px] text-slate-500">{c.channel}</span>
                       </div>
@@ -217,14 +222,14 @@ export default function ReportsPage() {
 
               {/* Top Feature Requests Section */}
               <div className="space-y-3">
-                <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                <h3 className="text-xs font-mono font-bold text-white uppercase tracking-wider flex items-center gap-2">
                   <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                   Top Requested & Praised Features
                 </h3>
                 <div className="space-y-2">
                   {reportContent.topFeatures?.map((f: any, i: number) => (
-                    <div key={i} className="p-3.5 rounded-xl bg-slate-900/80 border border-slate-800 text-xs space-y-1">
-                      <div className="flex items-center justify-between text-slate-300 font-semibold">
+                    <div key={i} className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 text-xs space-y-1.5">
+                      <div className="flex items-center justify-between text-slate-300 font-bold font-mono">
                         <span className="text-emerald-400 font-bold">{f.feature}</span>
                         <span className="text-[10px] text-slate-500">{f.channel}</span>
                       </div>
@@ -236,22 +241,22 @@ export default function ReportsPage() {
 
               {/* Recommended Action Plan */}
               <div className="space-y-3">
-                <h3 className="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-indigo-400" />
+                <h3 className="text-xs font-mono font-bold text-white uppercase tracking-wider flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-cyan-400" />
                   Recommended Action Plan for Product Team
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3 font-mono">
                   {reportContent.recommendedActions?.map((act: any, i: number) => (
-                    <div key={i} className="p-4 rounded-xl bg-indigo-950/20 border border-indigo-500/20 text-xs space-y-1.5">
+                    <div key={i} className="p-4 rounded-xl bg-cyan-950/20 border border-cyan-500/30 text-xs space-y-1.5">
                       <div className="flex items-center justify-between">
-                        <span className="font-bold text-indigo-300">{act.action}</span>
-                        <span className={`text-[9px] font-extrabold px-1.5 py-0.5 rounded ${
-                          act.priority === 'HIGH' ? 'bg-red-500/20 text-red-300' : 'bg-amber-500/20 text-amber-300'
+                        <span className="font-bold text-cyan-300">{act.action}</span>
+                        <span className={`text-[9px] font-bold px-2 py-0.5 rounded ${
+                          act.priority === 'HIGH' ? 'bg-red-500/20 text-red-300 border border-red-500/30' : 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
                         }`}>
                           {act.priority}
                         </span>
                       </div>
-                      <p className="text-[11px] text-slate-400">{act.impact}</p>
+                      <p className="text-[11px] text-slate-400 font-sans">{act.impact}</p>
                     </div>
                   ))}
                 </div>

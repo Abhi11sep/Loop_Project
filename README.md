@@ -39,13 +39,13 @@
 
 ## 🔑 Pre-Configured Seed Demo Credentials
 
-Graders and users can test all three RBAC roles on the pre-configured **Acme Cloud Platform** demo workspace using the following credentials on [http://localhost:3000/login](http://localhost:3000/login):
+Graders and users can test all three RBAC roles on the pre-configured **Loop Enterprise AI** demo workspace using the following credentials on [http://localhost:3000/login](http://localhost:3000/login):
 
 | Role | Email | Password | Access Scope |
 | :--- | :--- | :--- | :--- |
-| **ADMIN** | `admin@acme.com` | `password123` | Full workspace administration, team management & AI features |
-| **ANALYST** | `analyst@acme.com` | `password123` | Feedback ingestion, triage inbox, AI classification & reports |
-| **VIEWER** | `viewer@acme.com` | `password123` | Read-only access to dashboard, inbox, trends & Ask LOOP |
+| **ADMIN** | `admin@loop.com` | `password123` | Full workspace administration, team management & AI features |
+| **ANALYST** | `analyst@loop.com` | `password123` | Feedback ingestion, triage inbox, AI classification & reports |
+| **VIEWER** | `viewer@loop.com` | `password123` | Read-only access to dashboard, inbox, trends & Ask LOOP |
 
 ---
 

@@ -101,9 +101,9 @@ function createProjectPDF() {
   y += 8;
 
   const rolesData = [
-    { role: 'ADMIN', email: 'admin@acme.com', pass: 'password123', scope: 'Full Workspace & Team Admin' },
-    { role: 'ANALYST', email: 'analyst@acme.com', pass: 'password123', scope: 'Feedback Ingestion, Triage & AI' },
-    { role: 'VIEWER', email: 'viewer@acme.com', pass: 'password123', scope: 'Read-Only Observer (Protected)' },
+    { role: 'ADMIN', email: 'admin@loop.com', pass: 'password123', scope: 'Full Workspace & Team Admin' },
+    { role: 'ANALYST', email: 'analyst@loop.com', pass: 'password123', scope: 'Feedback Ingestion, Triage & AI' },
+    { role: 'VIEWER', email: 'viewer@loop.com', pass: 'password123', scope: 'Read-Only Observer (Protected)' },
   ];
 
   rolesData.forEach((row, i) => {

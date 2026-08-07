@@ -18,7 +18,7 @@ async function main() {
   // 1. Create Demo Workspace
   const workspace = await prisma.workspace.create({
     data: {
-      name: 'Acme Cloud Platform',
+      name: 'Loop Enterprise AI',
     },
   });
 
@@ -30,7 +30,7 @@ async function main() {
   const admin = await prisma.user.create({
     data: {
       name: 'Sarah Connor (Admin)',
-      email: 'admin@acme.com',
+      email: 'admin@loop.com',
       passwordHash,
       role: 'ADMIN',
       workspaceId: workspace.id,
@@ -40,7 +40,7 @@ async function main() {
   const analyst = await prisma.user.create({
     data: {
       name: 'Alex Rivera (Analyst)',
-      email: 'analyst@acme.com',
+      email: 'analyst@loop.com',
       passwordHash,
       role: 'ANALYST',
       workspaceId: workspace.id,
@@ -50,14 +50,14 @@ async function main() {
   const viewer = await prisma.user.create({
     data: {
       name: 'David Chen (Viewer)',
-      email: 'viewer@acme.com',
+      email: 'viewer@loop.com',
       passwordHash,
       role: 'VIEWER',
       workspaceId: workspace.id,
     },
   });
 
-  console.log('Created 3 demo users: admin@acme.com, analyst@acme.com, viewer@acme.com (password: password123)');
+  console.log('Created 3 demo users: admin@loop.com, analyst@loop.com, viewer@loop.com (password: password123)');
 
   // 3. Create Key Themes
   const themesData = [
